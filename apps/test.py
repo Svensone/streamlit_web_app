@@ -1,6 +1,7 @@
 import streamlit as st
 import time
 import numpy as np
+import yfinance as yf
 
 def app():
     st.title("Test")

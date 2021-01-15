@@ -21,31 +21,29 @@ def app():
         end= '2020-12-31' )
 
     st.write("""
-    ## Closing Price
+    ## Closing Price Tesla
     """)
     st.line_chart(tickerDf.Close)
 
     st.write("""
-    ### Volume Price
+    ### Volume Price Tesla
     """)
 
     st.line_chart(tickerDf.Volume)
 
     tickerSymbol2 = 'BTC-USD'
-
     tickerData2 = yf.Ticker(tickerSymbol2)
-
-    tickerDf2 = tickerData.history(
+    tickerDf2 = tickerData2.history(
         period='1d',
-        start= '2020-1-01',
+        start= '2017-1-01',
         end= '2020-12-31' )
 
     st.write("""
-    ## Closing Price
+    ## Closing Price Bitcoin
     """)
-    st.line_chart(tickerDf.Close)
+    st.line_chart(tickerDf2.Close)
 
     st.write("""
-    ### Volume Price
+    ### Volume Price Bitcoin
     """)
-    st.line_chart(tickerDf.Volume)
+    st.line_chart(tickerDf2.Volume)

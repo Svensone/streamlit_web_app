@@ -15,6 +15,7 @@ def app():
     st.write(df)
 
     st.write('Navigate to `Data Stats` page to visualize the data')
+
     # Set Background Image *local file" - heroku ?
     @st.cache(allow_output_mutation=True)
     def get_base64_of_bin_file(bin_file):
@@ -28,7 +29,7 @@ def app():
         <style>
         body {
         background-image: url("data:image/png;base64,%s");
-        background-size: cover;
+        background-size: auto;
         }
         </style>
         ''' % bin_str

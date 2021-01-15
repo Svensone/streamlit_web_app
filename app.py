@@ -7,8 +7,8 @@ app = MultiApp()
 # Add all your application here
 app.add_app("Home", home.app)
 app.add_app("Data Stats", data_stats.app)
-app.add_app("Stock Price Ticker", stock_price_ticker)
-app.add_app("Test", test)
+app.add_app("Stock Price Ticker", stock_price_ticker.app)
+app.add_app("Test", test.app)
 
 # The main app
 app.run()

@@ -1,4 +1,5 @@
 import yfinance as yf
+import base64
 import streamlit as st
 
 def app():
@@ -10,11 +11,10 @@ def app():
 
     """)
 
-    #define the ticker symbol
+    #for TESLA
+    #####################
     tickerSymbol = 'TSLA'
-
     tickerData = yf.Ticker(tickerSymbol)
-
     tickerDf = tickerData.history(
         period='1d',
         start= '2020-1-01',
@@ -31,6 +31,8 @@ def app():
 
     st.line_chart(tickerDf.Volume)
 
+    ### BITCOIN
+    #####################
     tickerSymbol2 = 'BTC-USD'
     tickerData2 = yf.Ticker(tickerSymbol2)
     tickerDf2 = tickerData2.history(
@@ -47,3 +49,26 @@ def app():
     ### Volume Price Bitcoin
     """)
     st.line_chart(tickerDf2.Volume)
+
+    # Set Background Image *local file" - heroku ?
+    @st.cache(allow_output_mutation=True)
+    def get_base64_of_bin_file(bin_file):
+        with open(bin_file, 'rb') as f:
+            data = f.read()
+        return base64.b64encode(data).decode()
+
+    def set_png_as_page_bg(png_file):
+        bin_str = get_base64_of_bin_file(png_file)
+        page_bg_img = '''
+        <style>
+        body {
+        background-image: url("data:image/png;base64,%s");
+        background-size: cover;
+        }
+        </style>
+        ''' % bin_str
+        
+        st.markdown(page_bg_img, unsafe_allow_html=True)
+        return
+
+    set_png_as_page_bg('money.jpg')

@@ -2,19 +2,27 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import base64
+
+from string import ascii_uppercase, digits
+from random import choices
+
 from data.create_data import create_table
 
 def app():
-    st.title('Home')
 
-    st.write("This is a sample home page in the mutliapp.")
-    st.write("See `apps/home.py` to know how to use it.")
 
-    st.markdown("### Sample Data")
-    df = create_table()
-    st.write(df)
+    img_base = "https://www.htmlcsscolor.com/preview/128x128/{0}.png"
 
-    st.write('Navigate to `Data Stats` page to visualize the data')
+    colors = (''.join(choices(ascii_uppercase[:6] + digits, k=6)) for _ in range(100))
+
+    with st.beta_container():
+        for col in st.beta_columns(3):
+            col.image(img_base.format(next(colors)), use_column_width=True)
+
+
+    with st.beta_container():
+        for col in st.beta_columns(4):
+            col.image(img_base.format(next(colors)), use_column_width=True)
 
     # Set Background Image *local file" - heroku ?
     @st.cache(allow_output_mutation=True)
@@ -29,7 +37,7 @@ def app():
         <style>
         body {
         background-image: url("data:image/png;base64,%s");
-        background-size: auto;
+        background-size: cover;
         }
         </style>
         ''' % bin_str

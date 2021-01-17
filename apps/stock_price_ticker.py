@@ -72,4 +72,4 @@ def app():
         st.markdown(page_bg_img, unsafe_allow_html=True)
         return
 
-    set_png_as_page_bg('money.jpg')
+    set_png_as_page_bg('assets/pig_money.jpg')

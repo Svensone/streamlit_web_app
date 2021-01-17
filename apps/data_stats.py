@@ -11,5 +11,5 @@ def app():
 
     st.markdown("### Plot Data")
     df = create_table()
-
+    
     st.line_chart(df)

@@ -3,6 +3,8 @@ import base64
 
 from multiapp import MultiApp
 from apps import basketball, home, data_stats, stock_price_ticker, test, dna # import your app modules here
+from helper import local_css
+
 
 app = MultiApp()
 ### set Layout Wide (needs to be first thing in app)
@@ -14,27 +16,28 @@ st.set_page_config(
         initial_sidebar_state='collapsed'
         )
 
+## test local css
+##################
+local_css("style.css")
 
 ### Background Image for Sidebar - not working yet
 #################################
-side_bg = "bg2.jpg"
+main_bg = "assets/bg1.jpg"
+main_bg_ext = "jpg"
+
+side_bg = "assets/bg-side.jpg"
 side_bg_ext = "jpg"
 
 st.markdown(
-    """
-<style>
-.reportview-container .markdown-text-container {
-    font-family: monospace;
-}
-#stSidebar {
-    background-image: linear-gradient(#2e7bcf,#2e7bcf);
-    color: blue;
-}
-</style>
-""",
-    unsafe_allow_html=True,
+    f"""
+    <style>
+    .css-1mazlfv {{
+            background: url(data:image/{side_bg_ext};base64,{base64.b64encode(open(side_bg, "rb").read()).decode()})
+    }}
+    </style>
+    """,
+    unsafe_allow_html=True
 )
-
 
 # Add all your application here
 app.add_app('Basketball', basketball.app)

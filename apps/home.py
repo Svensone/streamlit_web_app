@@ -20,14 +20,17 @@ def app():
     ## Testing streamlits beta_container and Background Image
     ###########################################################
     img_base = "https://www.htmlcsscolor.com/preview/128x128/{0}.png"
-
+    text = ['Webscraping', 'EDA', 'Visualization', 'Machine Learning', 'Layouting', 'Design', 'Data Crunching']
     colors = (''.join(choices(ascii_uppercase[:6] + digits, k=6)) for _ in range(100))
 
     with st.beta_container():
+        count = 0
         for col in st.beta_columns(3):
             col.image(img_base.format(next(colors)), use_column_width=True)
-
+            col.write(text[count])
+            count += 1
     with st.beta_container():
+        count = 3
         for col in st.beta_columns(4):
             col.image(img_base.format(next(colors)), use_column_width=True)
 
@@ -52,6 +55,7 @@ def app():
         st.markdown(page_bg_img, unsafe_allow_html=True)
         return
 
-    set_png_as_page_bg('bg1.jpg')
+    set_png_as_page_bg('assets/bg1.jpg')
+    
 
 

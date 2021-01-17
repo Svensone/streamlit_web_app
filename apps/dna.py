@@ -13,7 +13,7 @@ def app():
     ######################
     # Page Title
     ######################
-    image = Image.open('lab1.jpg')
+    image = Image.open('assets/lab1.jpg')
 
     st.image(image,use_column_width=True)
     st.write("""

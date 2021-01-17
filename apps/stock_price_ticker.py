@@ -11,7 +11,7 @@ def app():
 
     """)
 
-    #for TESLA
+    ### for TESLA
     #####################
     tickerSymbol = 'TSLA'
     tickerData = yf.Ticker(tickerSymbol)
@@ -50,7 +50,8 @@ def app():
     """)
     st.line_chart(tickerDf2.Volume)
 
-    # Set Background Image *local file" - heroku ?
+    # Set Background Image *local file" - heroku ? working
+    ###################################################
     @st.cache(allow_output_mutation=True)
     def get_base64_of_bin_file(bin_file):
         with open(bin_file, 'rb') as f:

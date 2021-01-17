@@ -6,11 +6,19 @@ import base64
 from string import ascii_uppercase, digits
 from random import choices
 
-from data.create_data import create_table
-
 def app():
+    st.title('Home / Overview')
+    st.markdown("""
+    ## Mix of different Projects 
+    - Webscraping
+    - EDA
+    - Visualization
+    - Machine Learning
+    - Layout / Design of streamlit App
+    """)
 
-
+    ## Testing streamlits beta_container and Background Image
+    ###########################################################
     img_base = "https://www.htmlcsscolor.com/preview/128x128/{0}.png"
 
     colors = (''.join(choices(ascii_uppercase[:6] + digits, k=6)) for _ in range(100))
@@ -18,7 +26,6 @@ def app():
     with st.beta_container():
         for col in st.beta_columns(3):
             col.image(img_base.format(next(colors)), use_column_width=True)
-
 
     with st.beta_container():
         for col in st.beta_columns(4):

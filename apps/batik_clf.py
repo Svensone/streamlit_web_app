@@ -3,8 +3,7 @@ import pandas as pd
 from PIL import Image
 import requests
 
-from fastai import * 
-import get_image_files, 
+from fastai import *
 from fastai.vision import *
 
 def app():

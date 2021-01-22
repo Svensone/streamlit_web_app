@@ -1,6 +1,7 @@
 import yfinance as yf
 import base64
 import streamlit as st
+from datetime import date
 
 def app():
     st.title('Stock Price Ticker')
@@ -18,7 +19,7 @@ def app():
     tickerDf = tickerData.history(
         period='1d',
         start= '2020-1-01',
-        end= '2020-12-31' )
+        end= '2021-01-21' )
 
     st.write("""
     ## Closing Price Tesla
@@ -35,10 +36,11 @@ def app():
     #####################
     tickerSymbol2 = 'BTC-USD'
     tickerData2 = yf.Ticker(tickerSymbol2)
+    end = date.today().strftime("%Y-%m-%d")
     tickerDf2 = tickerData2.history(
         period='1d',
         start= '2017-1-01',
-        end= '2020-12-31' )
+        end= end )
 
     st.write("""
     ## Closing Price Bitcoin

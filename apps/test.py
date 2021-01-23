@@ -1,11 +1,69 @@
 import streamlit as st
-import time
 import numpy as np
+
+## Animation test
+import time
 import yfinance as yf
+
+## Beta Container and Background Image
+import base64
+from string import ascii_uppercase, digits
+from random import choices
+
+## Bootstrap Components
 import streamlit.components.v1 as components
 
+## Data Stats
+from data.create_data import create_table
+
+
 def app():
-    # bootstrap 4 collapse example
+
+    ###########################################################
+    ## Testing streamlits beta_container and Background Image
+    ###########################################################
+    st.title('Testing streamlits beta_container and Background Image')
+    img_base = "https://www.htmlcsscolor.com/preview/128x128/{0}.png"
+    text = ['Webscraping', 'EDA', 'Visualization', 'Machine Learning', 'Layouting', 'Design', 'Data Crunching']
+    colors = (''.join(choices(ascii_uppercase[:6] + digits, k=6)) for _ in range(100))
+
+    with st.beta_container():
+        count = 0
+        for col in st.beta_columns(3):
+            col.image(img_base.format(next(colors)), use_column_width=True)
+            col.write(text[count])
+            count += 1
+    with st.beta_container():
+        count = 3
+        for col in st.beta_columns(4):
+            col.image(img_base.format(next(colors)), use_column_width=True)
+
+    @st.cache(allow_output_mutation=True)
+    def get_base64_of_bin_file(bin_file):
+        with open(bin_file, 'rb') as f:
+            data = f.read()
+        return base64.b64encode(data).decode()
+
+    def set_png_as_page_bg(png_file):
+        bin_str = get_base64_of_bin_file(png_file)
+        page_bg_img = '''
+        <style>
+        body {
+        background-image: url("data:image/png;base64,%s");
+        background-size: cover;
+        }
+        </style>
+        ''' % bin_str
+        
+        st.markdown(page_bg_img, unsafe_allow_html=True)
+        return
+
+    set_png_as_page_bg('assets/bg1.jpg')
+
+    ###########################################################
+    ## Testing Bootstraps Elements
+    ###########################################################
+    st.title('bootstrap 4 collapse example')
     components.html(
         """
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -44,8 +102,12 @@ def app():
         """,
         height=600,
     )
-    st.title("Test")
 
+    ###########################################################
+    ## Animation Test with Stock Data
+    ###########################################################
+
+    st.title("Animation Test")
     st.write(""" Test """)
     
     progress_bar = st.sidebar.progress(0)
@@ -67,3 +129,16 @@ def app():
     # this button is not connected to any other logic, it just causes a plain
     # rerun.
     st.button("Re-run")
+
+    ###########################################################
+    ## Data Stats
+    ###########################################################
+    st.title('Data Stats')
+
+    st.write("This is a sample data stats in the mutliapp.")
+    st.write("See `apps/data_stats.py` to know how to use it.")
+
+    st.markdown("### Plot Data")
+    df = create_table()
+    
+    st.line_chart(df)

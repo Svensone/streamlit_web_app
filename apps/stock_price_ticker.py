@@ -7,9 +7,8 @@ def app():
     st.title('Stock Price Ticker')
     st.write("""
     # Simple Stock Price App
-
     Shown are the stock **closing price** and ***volume*** of Tesla and Bitcoin in USD!
-
+    * **Python Libaries** yfinance, datetime, base64
     """)
 
     ### for TESLA

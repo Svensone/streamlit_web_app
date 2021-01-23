@@ -2,7 +2,7 @@ import streamlit as st
 import base64
 
 from multiapp import MultiApp
-from apps import basketball, iris_ml, home, data_stats, stock_price_ticker, test, dna # import your app modules here
+from apps import basketball, iris_ml, stock_price_ticker, test, dna # import your app modules here
 # batik_clf,
 from helper import local_css
 
@@ -40,13 +40,10 @@ local_css("style.css")
 # Add all your application here
 # app.add_app('Batik Cloth Classification', batik_clf.app)
 app.add_app('Iris Classification', iris_ml.app)
+app.add_app("DNA", dna.app)
 app.add_app('Basketball', basketball.app)
 app.add_app("Stock Price Ticker", stock_price_ticker.app)
-app.add_app("Overview", home.app)
-app.add_app("Data Stats", data_stats.app)
 app.add_app("Test", test.app)
-app.add_app("DNA", dna.app)
-
 
 # The main app
 app.run()

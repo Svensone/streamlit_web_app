@@ -13,7 +13,7 @@ def app():
 
     st.markdown("""
     This app performs simple webscraping of NBA player stats data!
-    * **Python libraries:** base64, pandas, streamlit
+    * **Python libraries:** base64, pandas, streamlit, matplotlib.pyplot, seaborn
     * **Data source:** [Basketball-reference.com](https://www.basketball-reference.com/).
     """)
 

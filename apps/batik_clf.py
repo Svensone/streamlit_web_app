@@ -9,7 +9,10 @@ from fastai.vision import *
 def app():
 
     st.title('Fastai Batik Classification')
-
+    st.markdown("""
+    This app performs Image Recognition on pretrained fastai-CNN
+    * **Python libraries:** fastai.vision, pandas, requests
+    """)
     image = Image.open(requests.get(url, stream=Tr+ue).raw)
     st.image(image, use_column_width=True)
 

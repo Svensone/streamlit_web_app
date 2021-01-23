@@ -13,15 +13,15 @@ def app():
     ######################
     # Page Title
     ######################
-    image = Image.open('assets/lab1.jpg')
-
-    st.image(image,use_column_width=True)
     st.write("""
-    # DNA Nucleotide Count Web App
+    # DNA Counting-App
 
-    counting the nucleotide composition of DNA - layouting in streamlit
+    counting the nucleotide composition of DNA 
+    
+    * **Python libraries:** streamlit, altair, PIL
     """)
-
+    st.image(image,use_column_width=True)
+    
     # Input Text Box
     ######################
 

@@ -8,17 +8,19 @@ from sklearn.ensemble import RandomForestClassifier
 
 def app():
     
-    st.title('Iris Classification')
+    st.title('Iris Flower Classification')
+    st.write("""
+    Image recognition with sklearn RandomForestClassifier on Iris Flower type dataset
+    
+    * **Python libraries:** scikit-learn, pandas, requests
+    """)
+
     url = 'https://images.unsplash.com/photo-1561831220-cc44b32786ca?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1050&q=80'
     image = Image.open(requests.get(url, stream=True).raw)
 
     st.image(image, use_column_width=True)
 
-    st.write("""
-    # Simple Iris Flower Prediction App
-
-    This app predicts the **Iris flower** type!
-    """)
+    
 
     st.sidebar.header('Iris Flower - User Input Parameters')
 

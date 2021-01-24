@@ -2,6 +2,7 @@ import streamlit as streamlit
 import pandas as pd
 from PIL import Image
 import requests
+import os
 
 from fastai import *
 from fastai.vision import *
@@ -13,13 +14,12 @@ def app():
     This app performs Image Recognition on pretrained fastai-CNN
     * **Python libraries:** fastai.vision, pandas, requests
     """)
-    image = Image.open(requests.get(url, stream=Tr+ue).raw)
+    image = Image.open(requests.get(url, stream=True).raw)
     st.image(image, use_column_width=True)
 
     # get data
-
     path_img = Path('data/Batik300')
-    st.write(path_img.ls())
+    st.write(os.listdir(path_img)
 
     #batch size
     bs = 64

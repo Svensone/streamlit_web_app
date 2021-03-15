@@ -20,6 +20,10 @@ def app():
     
     * **Python libraries:** streamlit, altair, PIL
     """)
+    
+    url = 'https://image.shutterstock.com/image-photo/blue-helix-human-dna-structure-600w-1669326868.jpg'
+    image = Image.open(requests.get(url, stream=True).raw)
+
     st.image(image,use_column_width=True)
     
     # Input Text Box

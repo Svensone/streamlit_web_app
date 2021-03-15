@@ -39,12 +39,12 @@ local_css("style.css")
 
 # Add all your application here
 # app.add_app('Batik Cloth Classification', batik_clf.app)
-app.add_app('Test2', test2.app)
+# app.add_app('Test2', test2.app)
 app.add_app('Iris Classification', iris_ml.app)
 app.add_app("DNA", dna.app)
 app.add_app('Basketball', basketball.app)
 app.add_app("Stock Price Ticker", stock_price_ticker.app)
-app.add_app("Test", test.app)
+# app.add_app("Test", test.app)
 
 # The main app
 app.run()
